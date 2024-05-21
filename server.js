@@ -2,7 +2,7 @@ const express = require('express')
 const cors = require('cors')
 const app = express()
 const corOptions = {
-    origin: 'http://localhost:5173'
+    origin: '*'
 }
 //midleware
 app.use(cors(corOptions))
