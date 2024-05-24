@@ -70,7 +70,7 @@ const loginUser = async (req, res) => {
 // get all Users
 const getAllUsers = async (req, res) => {
     try {
-      const users = await User.findAll({ attributes: ['username', 'email','role'] });
+      const users = await User.findAll({ attributes: [id,'username', 'email','role'] });
       res.status(200).json(users);
     } catch (error) {
       console.error("Error fetching users:", error);
@@ -83,7 +83,8 @@ const getAllUsers = async (req, res) => {
 const getOneUser = async (req, res) => {
     try {
         let id = req.params.id;
-        let user = await User.findOne({ where: { id } });
+        let user = await User.findOne({attributes: [id, 'username', 'email', 'role'], where: { id } });
+
         if (user) {
             res.status(200).json(user);
         } else {
