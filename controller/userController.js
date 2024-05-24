@@ -83,7 +83,7 @@ const getAllUsers = async (req, res) => {
 const getOneUser = async (req, res) => {
     try {
         let id = req.params.id;
-        let user = await User.findOne({attributes: [id, 'username', 'email', 'role'], where: { id } });
+        let user = await User.findOne({attributes: ['id', 'username', 'email', 'role'], where: { id } });
 
         if (user) {
             res.status(200).json(user);
